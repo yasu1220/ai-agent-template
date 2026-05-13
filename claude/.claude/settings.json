@@ -1,0 +1,22 @@
+{
+  "description": "AIエージェント会社設立 — Claude Code プロジェクト設定",
+  "agents": {
+    "_comment": "各エージェントの定義は ../agents/*/skills.md を参照",
+    "_path": "../../agents"
+  },
+  "context": {
+    "_comment": "Claude Code がセッション開始時に読み込む基本コンテキスト",
+    "files": [
+      "../CLAUDE.md",
+      "../../obsidian-vault/01_context/philosophy-values.md",
+      "../../obsidian-vault/01_context/professional-identity.md",
+      "../../obsidian-vault/01_context/technical-setup.md"
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-Content *)"
+    ]
+  }
+}

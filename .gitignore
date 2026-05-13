@@ -1,0 +1,78 @@
+# === 個人データ（絶対に共有しない）===
+
+# Obsidian個人コンテキスト（.template.md はリポジトリに残す）
+obsidian-vault/01_context/philosophy-values.md
+obsidian-vault/01_context/professional-identity.md
+obsidian-vault/01_context/technical-setup.md
+
+# 個人の inbox / handoff / decisions / projects
+obsidian-vault/00_inbox/*
+!obsidian-vault/00_inbox/_template.md
+!obsidian-vault/00_inbox/.gitkeep
+
+obsidian-vault/02_handoff/*
+!obsidian-vault/02_handoff/.gitkeep
+
+obsidian-vault/03_decisions/*
+!obsidian-vault/03_decisions/_template.md
+!obsidian-vault/03_decisions/README.md
+!obsidian-vault/03_decisions/.gitkeep
+
+obsidian-vault/04_projects/*
+!obsidian-vault/04_projects/.gitkeep
+
+obsidian-vault/99_archive/*
+!obsidian-vault/99_archive/.gitkeep
+
+# Obsidian設定（ワークスペース固有）
+obsidian-vault/.obsidian/workspace*
+obsidian-vault/.obsidian/cache
+obsidian-vault/.trash/
+
+# 日次TODO（人生の生データ）
+daily/*.md
+!daily/_template.md
+!daily/.gitkeep
+
+# 実行ログ
+logs/*
+!logs/.gitkeep
+
+# エージェントの机
+agents/**/desk/*
+!agents/**/desk/README.md
+!agents/**/desk/.gitkeep
+
+# タスクボード（実タスク）
+task-board/main-board.md
+task-board/dashboard.md
+task-board/data/*
+!task-board/data/.gitkeep
+
+# === Obsidian プラグイン実体（ユーザーが各自インストール）===
+.obsidian/plugins/
+.obsidian/workspace.json
+obsidian-vault/.obsidian/workspace*
+
+# === バイナリ・個人ドキュメント ===
+*.pdf
+*.pptx
+*.ppt
+*.xlsx
+*.docx
+相談用サマリー.md
+
+# === システム ===
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+node_modules/
+
+# === シークレット ===
+.env
+.env.local
+secrets/
+*.key
+*.pem

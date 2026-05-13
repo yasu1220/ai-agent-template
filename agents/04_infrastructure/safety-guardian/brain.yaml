@@ -1,0 +1,11 @@
+# safety-guardian の頭脳設定
+primary: claude-opus-4-6
+escalation: claude-opus-4-6
+fallback: claude-sonnet-4-6
+temperature: 0.2
+max_tokens: 6000
+
+# Ollamaに換装する場合の例:
+# provider: ollama
+# model: qwen2.5:7b
+# endpoint: http://localhost:11434

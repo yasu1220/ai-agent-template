@@ -1,0 +1,11 @@
+# data の頭脳設定
+primary: claude-sonnet-4-6
+escalation: claude-opus-4-6
+fallback: claude-haiku-4-5
+temperature: 0.3
+max_tokens: 4096
+
+# Ollamaに換装する場合の例:
+# provider: ollama
+# model: qwen2.5:7b
+# endpoint: http://localhost:11434
