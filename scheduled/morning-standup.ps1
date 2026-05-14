@@ -2,7 +2,7 @@
 # 毎朝 7:00 に実行。前夜のAI作業結果と今日のTop3を集計し、daily/に書き出す。
 
 $ErrorActionPreference = "Stop"
-$base = "C:\Users\yasu\Documents\テスト会社\AIエージェント会社設立"
+$base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 $yesterday = (Get-Date).AddDays(-1).ToString("yyyy-MM-dd")
 

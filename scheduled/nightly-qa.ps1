@@ -2,7 +2,7 @@
 # 毎晩 23:00 に実行。整合性チェック・古いファイルの検出を行う。
 
 $ErrorActionPreference = "Stop"
-$base = "C:\Users\yasu\Documents\テスト会社\AIエージェント会社設立"
+$base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 
 $logDir = "$base\logs\$today"

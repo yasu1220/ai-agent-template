@@ -3,7 +3,7 @@
 # （実際のAI呼び出しは次フェーズで実装）
 
 $ErrorActionPreference = "Stop"
-$base = "C:\Users\yasu\Documents\テスト会社\AIエージェント会社設立"
+$base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 
 $logDir = "$base\logs\$today"

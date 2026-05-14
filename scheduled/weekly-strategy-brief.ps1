@@ -2,7 +2,7 @@
 # 毎週月曜 7:00 に実行。先週の状況サマリと今週の方針を生成する。
 
 $ErrorActionPreference = "Stop"
-$base = "C:\Users\yasu\Documents\テスト会社\AIエージェント会社設立"
+$base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 $weekNum = [System.Globalization.ISOWeek]::GetWeekOfYear((Get-Date))
 

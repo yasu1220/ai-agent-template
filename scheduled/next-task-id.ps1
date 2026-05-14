@@ -3,7 +3,7 @@
 # 使い方: $id = & .\next-task-id.ps1
 
 $ErrorActionPreference = "Stop"
-$base = "C:\Users\yasu\Documents\テスト会社\AIエージェント会社設立"
+$base = Split-Path -Parent $PSScriptRoot
 $boardFile = "$base\task-board\main-board.md"
 
 if (-not (Test-Path $boardFile)) {
