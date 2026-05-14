@@ -44,6 +44,7 @@ agents/**/desk/*
 !agents/**/desk/.gitkeep
 
 # タスクボード（実タスク）
+task-board/main-board.md
 task-board/dashboard.md
 task-board/data/*
 !task-board/data/.gitkeep
