@@ -60,6 +60,23 @@
 
 ## セットアップ手順
 
+### 0. リポジトリを取得する
+
+**初回（クローン）**
+```bash
+git clone https://github.com/yasu1220/ai-agent-template.git
+cd ai-agent-template
+```
+
+**テンプレートの更新を取り込む（2回目以降）**
+```bash
+git pull origin main
+```
+
+> ⚠️ `obsidian-vault/01_context/` 配下は `.gitignore` で除外されているため、個人情報（哲学・キャリア・ツール設定）は `git pull` で上書きされません。
+
+---
+
 ### 1. Obsidian をインストール
 1. https://obsidian.md からダウンロード
 2. 「Open vault」で `obsidian-vault/` フォルダを選択
