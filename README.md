@@ -83,21 +83,26 @@ git pull origin main
 3. プラグインインストール: Kanban / Dataview / Templater
 
 ### 2. 個人情報を埋める
-- `obsidian-vault/01_context/philosophy-values.md` ← あなたの哲学
-- `obsidian-vault/01_context/professional-identity.md` ← キャリア
-- `obsidian-vault/01_context/technical-setup.md` ← 使用ツール
 
-### 3. エージェントを必要に応じてカスタマイズ
-- `agents/*/skills.md` に各エージェントの指示書がある
-- 自分の業務に合わせて修正
+各テンプレートをコピーして `.template.md` の部分を除いたファイル名で保存し、記入する。
 
-### 4. 定期実行を登録
-- `scheduled/README.md` を見て、タスクスケジューラに登録
+**必須**
+- `obsidian-vault/01_context/philosophy-values.md` ← あなたの哲学・価値観・聖域
+- `obsidian-vault/01_context/professional-identity.md` ← キャリア・スキル・使える時間
 
-### 5. 運用開始
-- 毎朝 Cowork で「今日の状況」と聞く → `daily/` に今日のTODOが書かれる
+**任意**（埋めなくても日次タスク生成は動く）
+- `obsidian-vault/01_context/technical-setup.md` ← 使用ツール・環境
+
+### 3. タスクボードに最初のタスクを追加する
+
+`task-board/main-board.md` を Obsidian の Kanban ビューで開き、「📥 NEW / UNASSIGNED」に最初のタスクを1件追加する。
+
+### 4. 今日の日次ファイルを生成して運用開始
+
+Claude Code または Cowork に「今日のタスクを生成して」と依頼すると `daily/YYYY-MM-DD.md` が作られる。  
+あとは毎朝これを繰り返すだけ。
+
 - 思いついたことは `obsidian-vault/00_inbox/` に投げ込む
-- 詳細は `docs/operation-handbook.md`
 
 ---
 
@@ -106,12 +111,12 @@ git pull origin main
 **必須（追加コスト¥0）**
 - Cowork（契約済み）
 - Obsidian（無料）
-- Windows タスクスケジューラ（OS標準）
 
 **任意（後から追加可）**
 - Claude MAX（$200/月、エンジニアリングをフル活用するなら）
 - iCloud Drive（スマホ連携用、無料枠で十分）
 - Ollama（ローカルAI、運用が安定してから）
+- Windows タスクスケジューラ（定期自動化を使う場合）
 
 ---
 
