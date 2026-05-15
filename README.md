@@ -99,8 +99,21 @@ git pull origin main
 
 ### 4. 今日の日次ファイルを生成して運用開始
 
-Claude Code または Cowork に「今日のタスクを生成して」と依頼すると `daily/YYYY-MM-DD.md` が作られる。  
-あとは毎朝これを繰り返すだけ。
+Claude Code または Cowork に「今日のタスクを生成して」と依頼すると `daily/YYYY-MM-DD.md` が作られる。
+
+```
+毎朝の流れ
+
+  Claude に「今日のタスクを生成して」と依頼
+          ↓
+  daily/YYYY-MM-DD.md が生成される（今日やることのTop3など）
+          ↓
+  task-board/main-board.md をカンバンビューで開く
+  → 生成されたタスクをカードで確認・並び替え
+  → 新しいタスクをその場で追加することも可能
+          ↓
+  タスクが完了したらカンバン上で ✅ DONE に移動
+```
 
 - 思いついたことは `obsidian-vault/00_inbox/` に投げ込む
 
