@@ -82,10 +82,22 @@ git pull origin main
 Obsidian は、Claudeが生成した日次タスクやカンバンボードをビジュアルで確認・編集できるビューアとして使う。  
 チェックを入れたり、カードを動かしたりする操作がここで完結する。
 
-1. https://obsidian.md からダウンロード
+**インストールと初期設定**
+
+1. https://obsidian.md からダウンロードしてインストール
 2. 起動後「Open folder as vault」でクローンしたリポジトリ内の `obsidian-vault/` フォルダを選択
    - 例：`C:\Users\yourname\ai-agent-template\obsidian-vault`
-3. プラグインインストール: Kanban / Dataview / Templater
+3. 左下の設定アイコン（⚙️）→「コミュニティプラグイン」→「閲覧」から以下をインストールして有効化
+   - **Kanban**（カンバンボード表示）
+   - **Dataview**（タスク集計）
+   - **Templater**（テンプレート展開）
+
+**カンバンボードを開く**
+
+4. 左サイドバーのファイルエクスプローラーで `task-board/main-board.md` を開く
+5. カンバンビューで「📥 NEW」「🔄 IN PROGRESS」「✅ DONE」の列が表示される
+   - カードをドラッグして列を移動できる
+   - 列の「+」ボタンから新しいタスクを追加できる
 
 ### 2. Claude Code を起動する
 
