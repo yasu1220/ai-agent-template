@@ -78,6 +78,10 @@ git pull origin main
 ---
 
 ### 1. Obsidian をインストール
+
+Obsidian は、Claudeが生成した日次タスクやカンバンボードをビジュアルで確認・編集できるビューアとして使う。  
+チェックを入れたり、カードを動かしたりする操作がここで完結する。
+
 1. https://obsidian.md からダウンロード
 2. 起動後「Open folder as vault」でクローンしたリポジトリ内の `obsidian-vault/` フォルダを選択
    - 例：`C:\Users\yourname\ai-agent-template\obsidian-vault`
