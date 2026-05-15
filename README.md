@@ -79,10 +79,22 @@ git pull origin main
 
 ### 1. Obsidian をインストール
 1. https://obsidian.md からダウンロード
-2. 「Open vault」で `obsidian-vault/` フォルダを選択
+2. 起動後「Open folder as vault」でクローンしたリポジトリ内の `obsidian-vault/` フォルダを選択
+   - 例：`C:\Users\yourname\ai-agent-template\obsidian-vault`
 3. プラグインインストール: Kanban / Dataview / Templater
 
-### 2. 個人情報を埋める
+### 2. Claude Code を起動する
+
+ターミナル（PowerShell など）でリポジトリのルートに移動し、`claude` と入力して起動する。
+
+```bash
+cd ai-agent-template
+claude
+```
+
+起動後、日本語でそのまま話しかけるだけで動作する。
+
+### 3. 個人情報を埋める
 
 各テンプレートをコピーして `.template.md` の部分を除いたファイル名で保存し、記入する。
 
