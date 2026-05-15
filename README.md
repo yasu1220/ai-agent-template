@@ -94,16 +94,18 @@ claude
 
 起動後、日本語でそのまま話しかけるだけで動作する。
 
-### 3. 個人情報を埋める
+### 3. 個人情報を埋める（任意）
 
-各テンプレートをコピーして `.template.md` の部分を除いたファイル名で保存し、記入する。
+> このステップは埋めなくても日次タスク生成は動く。埋めるほどAIがあなたの文脈を理解して判断の質が上がる。
 
-**必須**
-- `obsidian-vault/01_context/philosophy-values.md` ← あなたの哲学・価値観・聖域
-- `obsidian-vault/01_context/professional-identity.md` ← キャリア・スキル・使える時間
+各テンプレートをコピーして `.template.md` を除いたファイル名で保存し、記入する。
 
-**任意**（埋めなくても日次タスク生成は動く）
-- `obsidian-vault/01_context/technical-setup.md` ← 使用ツール・環境
+- `obsidian-vault/01_context/philosophy-values.template.md` → `philosophy-values.md`  
+  あなたの価値観・判断軸・触れてはいけないこと・バグサイン
+- `obsidian-vault/01_context/professional-identity.template.md` → `professional-identity.md`  
+  現在の仕事・副業・スキル・使える時間帯・ロードマップ
+- `obsidian-vault/01_context/technical-setup.template.md` → `technical-setup.md`  
+  使用OS・エディタ・AIツール・連携サービス
 
 ### 3. 今日の日次ファイルを生成して運用開始
 
