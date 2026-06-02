@@ -1,10 +1,9 @@
 # Daily — YYYY-MM-DD
 
-## 🌅 今日のTop3（人間がやること）
+## 🌅 今日やること（人間）
 
-![[task-board/main-board#^tXXXX]]
-![[task-board/main-board#^tXXXX]]
-![[task-board/main-board#^tXXXX]]
+<!-- main-board から選定。件数は問わない。形式: ![[task-board/main-board#^tXXXX]] -->
+
 
 ---
 

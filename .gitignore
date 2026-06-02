@@ -24,6 +24,13 @@ obsidian-vault/04_projects/*
 obsidian-vault/99_archive/*
 !obsidian-vault/99_archive/.gitkeep
 
+# 戦略の個人実績データ（月次で自動生成されるもの）
+obsidian-vault/05_strategy/progress-tracking-*.md
+
+# 戦略セッションのアーカイブ（個人セッション記録）
+obsidian-vault/05_strategy/reviews/*
+!obsidian-vault/05_strategy/reviews/.gitkeep
+
 # Obsidian設定（ワークスペース固有）
 obsidian-vault/.obsidian/workspace*
 obsidian-vault/.obsidian/cache
@@ -44,7 +51,6 @@ agents/**/desk/*
 !agents/**/desk/.gitkeep
 
 # タスクボード（実タスク）
-task-board/dashboard.md
 task-board/data/*
 !task-board/data/.gitkeep
 

@@ -12,11 +12,11 @@ if (-not (Test-Path $boardFile)) {
 }
 
 $content = Get-Content $boardFile -Raw -Encoding UTF8
-$matches = [regex]::Matches($content, 'T(\d{4})')
+$taskMatches = [regex]::Matches($content, 'T(\d{4})')
 
-if ($matches.Count -eq 0) {
+if ($taskMatches.Count -eq 0) {
     "T0001"
 } else {
-    $maxId = ($matches | ForEach-Object { [int]$_.Groups[1].Value } | Measure-Object -Maximum).Maximum
-    "T{0:D4}" -f ($maxId + 1)
+    $maxId = ($taskMatches | ForEach-Object { [int]$_.Groups[1].Value } | Measure-Object -Maximum).Maximum
+    "T" + ([int]$maxId + 1).ToString().PadLeft(4, '0')
 }
