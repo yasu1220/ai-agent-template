@@ -1,4 +1,4 @@
-# セットアップガイド
+﻿# セットアップガイド
 
 このリポジトリを clone した人が同じ環境を再現するための手順書です。  
 対象：Windows / Mac ユーザー / Claude Code インストール済みの方
@@ -86,21 +86,33 @@ Copy-Item task-board/dashboard.template.md task-board/dashboard.md
 
 ---
 
-## 手順 5：タスクスケジューラを設定する（Windows・自動化したい場合のみ）
+## 手順 5：スケジューラを設定する（自動化したい場合）
 
-朝9時の daily 自動生成と、土曜22時の git push を自動化するには、以下を**管理者として**実行してください。
-
-```powershell
-# PowerShell を管理者として起動し、リポジトリのルートに cd した後：
-& ".\scheduled\register-morning-standup.ps1"
-```
-
-これで2つのタスクが登録されます：
+3つの定期タスクを自動実行できます。
 
 | タスク名 | 実行タイミング | 役割 |
 |---|---|---|
 | `AIAgent_MorningStandup` | 毎日 09:00 | daily ファイル生成・タスク選定・git push |
 | `AIAgent_SaturdayPush` | 毎週土曜 22:00 | progress-tracking の git push |
+| `AIAgent_StrategyReview` | 毎週日曜 08:00 | 戦略レビュー（strategy-review-YYYY-MM-DD.md）を自動生成 |
+
+### Windows（タスクスケジューラ）
+
+PowerShell を**管理者として起動**し、リポジトリのルートに `cd` した後：
+
+```powershell
+& ".\scheduled\register-morning-standup.ps1"
+```
+
+### Mac（launchd）
+
+ターミナルで実行：
+
+```bash
+pwsh ./scheduled/register-morning-standup.ps1
+```
+
+実行すると `~/Library/LaunchAgents/` に plist ファイルが3つ生成され自動実行されます。
 
 > 💡 自動化しない場合は `scheduled/morning-standup.ps1` を手動実行してください。
 
@@ -165,13 +177,14 @@ pwsh ./scheduled/register-morning-standup.ps1
 ```
 
 実行すると `~/Library/LaunchAgents/` に launchd の plist ファイルが生成され、  
-毎日 09:00 と毎週土曜 22:00 に自動実行されます。
+毎日 09:00 / 毎週土曜 22:00 / 毎週日曜 08:00 に自動実行されます。
 
 登録を解除したい場合：
 
 ```bash
 launchctl unload ~/Library/LaunchAgents/com.aiagent.morningstandup.plist
 launchctl unload ~/Library/LaunchAgents/com.aiagent.saturdaypush.plist
+launchctl unload ~/Library/LaunchAgents/com.aiagent.strategyreview.plist
 ```
 
 ---
@@ -190,8 +203,9 @@ AIエージェント会社設立/
 ├── daily/                      ← 日次TODO（gitignore・個人データ）
 ├── agents/                     ← AIエージェント定義
 ├── scheduled/                  ← 自動実行スクリプト
-│   ├── morning-standup.ps1     ← 毎朝9時に自動実行
-│   ├── saturday-push.ps1       ← 毎週土曜22時に自動実行
-│   └── register-morning-standup.ps1  ← タスクスケジューラ登録（初回のみ）
+│   ├── morning-standup.ps1         ← 毎朝9時に自動実行
+│   ├── saturday-push.ps1           ← 毎週土曜22時に自動実行
+│   ├── generate-strategy-review.ps1 ← 毎週日曜8時に戦略レビュー自動生成
+│   └── register-morning-standup.ps1 ← スケジューラ登録（初回のみ）
 └── logs/                       ← 実行ログ（gitignore）
 ```
