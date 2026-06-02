@@ -3,7 +3,7 @@
 
 $ErrorActionPreference = "Stop"
 $base = Split-Path -Parent $PSScriptRoot
-$today = "2026-06-08"
+$today = "2026-06-09"
 
 $logDir = "$base\logs\$today"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
@@ -18,7 +18,7 @@ function Write-Log($msg) {
 Write-Log "=== morning-standup 開始 ==="
 
 # 1. 日曜のみ GitHub から最新を取得（週次エージェントの strategy-review を受け取る）
-if (([DateTime]"2026-06-08").DayOfWeek -eq 'Sunday') {
+if (([DateTime]"2026-06-09").DayOfWeek -eq 'Sunday') {
     try {
         $gitResult = & git -C $base pull
         Write-Log "git pull: $gitResult"
@@ -31,11 +31,11 @@ if (([DateTime]"2026-06-08").DayOfWeek -eq 'Sunday') {
 $yearMonth = "2026-06"
 $progressFile = "$base\obsidian-vault\05_strategy\progress-tracking-$yearMonth.md"
 if (-not (Test-Path $progressFile)) {
-    $monthLabel = ([DateTime]"2026-06-08").Year.ToString() + "年" + ([DateTime]"2026-06-08").Month.ToString() + "月"
-    $daysInMonth = [DateTime]::DaysInMonth(([DateTime]"2026-06-08").Year, ([DateTime]"2026-06-08").Month)
+    $monthLabel = ([DateTime]"2026-06-09").Year.ToString() + "年" + ([DateTime]"2026-06-09").Month.ToString() + "月"
+    $daysInMonth = [DateTime]::DaysInMonth(([DateTime]"2026-06-09").Year, ([DateTime]"2026-06-09").Month)
 
     # 現在フェーズを月番号から自動判定
-    $monthNum = ([DateTime]"2026-06-08").Month
+    $monthNum = ([DateTime]"2026-06-09").Month
     $phaseText = switch ($monthNum) {
         { $_ -in 5, 6, 7 } { "フェーズ1 仕込み期（5〜7月）" }
         { $_ -in 8, 9 }    { "フェーズ2 バズ期（8〜9月）" }
@@ -210,7 +210,7 @@ if (Test-Path $dailyFile) {
 
     # 土曜のみ：progress-tracking 更新リマインダーを「今日やること」の先頭に追加
     $saturdayPrefix = ""
-    if (([DateTime]"2026-06-08").DayOfWeek -eq 'Saturday') {
+    if (([DateTime]"2026-06-09").DayOfWeek -eq 'Saturday') {
         $yearMonth = "2026-06"
         $progressFileName = "progress-tracking-$yearMonth.md"
         $saturdayPrefix = @"
@@ -236,7 +236,7 @@ if (Test-Path $dailyFile) {
 
     # 日曜のみ：戦略セッション手順を「今日やること」の先頭に追加
     $sundayPrefix = ""
-    if (([DateTime]"2026-06-08").DayOfWeek -eq 'Sunday') {
+    if (([DateTime]"2026-06-09").DayOfWeek -eq 'Sunday') {
         $strategyReviewFile = Get-ChildItem "$base\obsidian-vault\00_inbox" -Filter "strategy-review-*.md" -ErrorAction SilentlyContinue |
             Sort-Object LastWriteTime -Descending | Select-Object -First 1
         $reviewNote = if ($strategyReviewFile) {
