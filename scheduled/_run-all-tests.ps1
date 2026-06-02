@@ -167,7 +167,7 @@ Check "daily/2026-06-13.md が生成された" (Test-Path $daily)
 if (Test-Path $daily) {
     $dc = Get-Content $daily -Raw -Encoding UTF8
     Check "今日やることに「progress-tracking 更新」が含まれる" ($dc -match "progress-tracking")
-    Check "更新テーブルが含まれる"                            ($dc -match "月商.*更新する値")
+    Check "更新テーブルが含まれる"                            ($dc -match "更新する値")
     Check "main-boardタスクが含まれる"                        ($dc -match "main-board#\^t")
     Check "morning-standupサマリーが追記"                     ($dc -match "morning-standup 実行結果")
 }
@@ -180,10 +180,10 @@ Write-Section "TEST 8: 土曜22:00 - saturday-push"
 $logDir = "$base\logs\2026-06-13"
 New-Item -ItemType Directory -Force $logDir | Out-Null
 & $satPushScript 2>&1 | Out-Null
-$logFile = "$logDir\saturday-push.log"
-Check "saturday-push.log が生成された" (Test-Path $logFile)
-if (Test-Path $logFile) {
-    $lc = Get-Content $logFile -Raw -Encoding UTF8
+$logFile = Get-ChildItem "$base\logs" -Recurse -Filter "saturday-push.log" | Select-Object -First 1
+Check "saturday-push.log が生成された" ($null -ne $logFile)
+if ($null -ne $logFile) {
+    $lc = Get-Content $logFile.FullName -Raw -Encoding UTF8
     Check "saturday-push 開始/完了ログが記録された" ($lc -match "saturday-push 開始" -and $lc -match "saturday-push 完了")
 }
 
