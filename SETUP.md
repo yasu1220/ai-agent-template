@@ -1,7 +1,7 @@
 # セットアップガイド
 
 このリポジトリを clone した人が同じ環境を再現するための手順書です。  
-対象：Windows ユーザー / Claude Code インストール済みの方
+対象：Windows / Mac ユーザー / Claude Code インストール済みの方
 
 ---
 
@@ -10,6 +10,8 @@
 - **Git**（[git-scm.com](https://git-scm.com) からダウンロード）
 - **Obsidian**（[obsidian.md](https://obsidian.md) からダウンロード）
 - **Claude Code**（インストール済み前提）
+- **PowerShell Core (pwsh)**（Macの場合のみ — Windowsは不要）
+  - Mac: `brew install --cask powershell`
 
 ---
 
@@ -144,13 +146,33 @@ Instagram 投稿文を3案作って
 ## OS 別の注意事項
 
 ### Windows
-`scheduled/` フォルダの `.ps1` スクリプトはそのまま実行できます。  
+`scheduled/` フォルダの `.ps1` スクリプトはそのまま `powershell.exe` で実行できます。  
 パスはスクリプト自身の場所から自動解決されるため、どのディレクトリに置いても動作します。
 
-### Mac / Linux
-`scheduled/` フォルダに PowerShell スクリプト（`.ps1`）が入っていますが、  
-**これらは現時点では Mac / Linux での自動実行を想定していません。**  
-手動で Claude Code に依頼するか、必要になったタイミングで bash スクリプトへの書き直しを検討してください。
+タスクスケジューラへの登録（手順5）は PowerShell を **管理者として起動** して実行してください。
+
+### Mac
+PowerShell Core (`pwsh`) が必要です。未インストールの場合：
+
+```bash
+brew install --cask powershell
+```
+
+タスクの自動登録（手順5）は以下で実行します：
+
+```bash
+pwsh ./scheduled/register-morning-standup.ps1
+```
+
+実行すると `~/Library/LaunchAgents/` に launchd の plist ファイルが生成され、  
+毎日 09:00 と毎週土曜 22:00 に自動実行されます。
+
+登録を解除したい場合：
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.aiagent.morningstandup.plist
+launchctl unload ~/Library/LaunchAgents/com.aiagent.saturdaypush.plist
+```
 
 ---
 

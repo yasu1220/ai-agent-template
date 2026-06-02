@@ -47,7 +47,7 @@ WHERE !completed AND (contains(tags, "#engineering") OR contains(tags, "#tech-le
 ```dataview
 TASK
 FROM "task-board"
-WHERE !completed AND (contains(tags, "#content") OR contains(tags, "#brand-voice"))
+WHERE !completed AND (contains(tags, "#content") OR contains(tags, "#brand-voice") OR contains(tags, "#anti-ai-slop"))
 ```
 
 ### 💼 Business
@@ -55,7 +55,7 @@ WHERE !completed AND (contains(tags, "#content") OR contains(tags, "#brand-voice
 ```dataview
 TASK
 FROM "task-board"
-WHERE !completed AND (contains(tags, "#business") OR contains(tags, "#marketing"))
+WHERE !completed AND (contains(tags, "#business") OR contains(tags, "#marketing") OR contains(tags, "#legal-review"))
 ```
 
 ### 🛠️ Infrastructure
@@ -63,7 +63,7 @@ WHERE !completed AND (contains(tags, "#business") OR contains(tags, "#marketing"
 ```dataview
 TASK
 FROM "task-board"
-WHERE !completed AND (contains(tags, "#infra") OR contains(tags, "#setup") OR contains(tags, "#cowork") OR contains(tags, "#claude-code"))
+WHERE !completed AND (contains(tags, "#infra") OR contains(tags, "#task-dispatch") OR contains(tags, "#safety-guardian") OR contains(tags, "#cowork") OR contains(tags, "#setup"))
 ```
 
 ---

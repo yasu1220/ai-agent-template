@@ -5,9 +5,9 @@ $ErrorActionPreference = "Stop"
 $base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 
-$logDir = "$base\logs\$today"
+$logDir = "$base/logs/$today"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$logFile = "$logDir\morning-standup.log"
+$logFile = "$logDir/morning-standup.log"
 
 function Write-Log($msg) {
     $ts = Get-Date -Format "HH:mm:ss"
@@ -29,7 +29,7 @@ if ((Get-Date).DayOfWeek -eq 'Sunday') {
 
 # 2. 当月の progress-tracking が未作成なら生成（月初に自動作成）
 $yearMonth = Get-Date -Format "yyyy-MM"
-$progressFile = "$base\obsidian-vault\05_strategy\progress-tracking-$yearMonth.md"
+$progressFile = "$base/obsidian-vault/05_strategy/progress-tracking-$yearMonth.md"
 if (-not (Test-Path $progressFile)) {
     $monthLabel = (Get-Date).Year.ToString() + "年" + (Get-Date).Month.ToString() + "月"
     $daysInMonth = [DateTime]::DaysInMonth((Get-Date).Year, (Get-Date).Month)
@@ -44,7 +44,7 @@ if (-not (Test-Path $progressFile)) {
     }
 
     # okr-2026.md から当月の目標値を取得
-    $okrFile = "$base\obsidian-vault\05_strategy\okr-2026.md"
+    $okrFile = "$base/obsidian-vault/05_strategy/okr-2026.md"
     $targetRevenue  = "（okr-2026.md を確認）"
     $targetCorp     = "（okr-2026.md を確認）"
     $targetPersonal = "（okr-2026.md を確認）"
@@ -114,9 +114,9 @@ if (-not (Test-Path $progressFile)) {
 }
 
 # 2.5. daily が未作成なら _template.md からコピー
-$dailyFile = "$base\daily\$today.md"
+$dailyFile = "$base/daily/$today.md"
 if (-not (Test-Path $dailyFile)) {
-    $template = "$base\daily\_template.md"
+    $template = "$base/daily/_template.md"
     if (Test-Path $template) {
         Copy-Item $template $dailyFile
         (Get-Content $dailyFile -Raw -Encoding UTF8) -replace 'YYYY-MM-DD', $today |
@@ -128,7 +128,7 @@ if (-not (Test-Path $dailyFile)) {
 }
 
 # 3. main-board の [x] タスクを DONE セクションに移動
-$boardFile = "$base\task-board\main-board.md"
+$boardFile = "$base/task-board/main-board.md"
 
 if (Test-Path $boardFile) {
     $raw = Get-Content $boardFile -Raw -Encoding UTF8
@@ -237,7 +237,7 @@ if (Test-Path $dailyFile) {
     # 日曜のみ：戦略セッション手順を「今日やること」の先頭に追加
     $sundayPrefix = ""
     if ((Get-Date).DayOfWeek -eq 'Sunday') {
-        $strategyReviewFile = Get-ChildItem "$base\obsidian-vault\00_inbox" -Filter "strategy-review-*.md" -ErrorAction SilentlyContinue |
+        $strategyReviewFile = Get-ChildItem "$base/obsidian-vault/00_inbox" -Filter "strategy-review-*.md" -ErrorAction SilentlyContinue |
             Sort-Object LastWriteTime -Descending | Select-Object -First 1
         $reviewNote = if ($strategyReviewFile) {
             "> 📄 今週の戦略レビューファイル: ``$($strategyReviewFile.Name)`` が届いています。"
@@ -282,7 +282,7 @@ $reviewNote
 }
 
 # 6. inbox の未処理件数をカウント
-$inboxDir = "$base\obsidian-vault\00_inbox"
+$inboxDir = "$base/obsidian-vault/00_inbox"
 $inboxCount = (Get-ChildItem $inboxDir -Filter "*.md" -ErrorAction SilentlyContinue |
     Where-Object { $_.Name -ne "_template.md" }).Count
 Write-Log "未処理 inbox: $inboxCount 件"

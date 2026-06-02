@@ -5,9 +5,9 @@ $ErrorActionPreference = "Stop"
 $base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 
-$logDir = "$base\logs\$today"
+$logDir = "$base/logs/$today"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$logFile = "$logDir\nightly-qa.log"
+$logFile = "$logDir/nightly-qa.log"
 
 function Write-Log($msg) {
     $ts = Get-Date -Format "HH:mm:ss"
@@ -17,8 +17,8 @@ function Write-Log($msg) {
 Write-Log "=== nightly-qa 開始 ==="
 
 # 1. task-board と obsidian-vault/04_projects/ の対応チェック
-$boardFile = "$base\task-board\main-board.md"
-$projectsDir = "$base\obsidian-vault\04_projects"
+$boardFile = "$base/task-board/main-board.md"
+$projectsDir = "$base/obsidian-vault/04_projects"
 
 if (Test-Path $boardFile) {
     $content = Get-Content $boardFile -Raw -Encoding UTF8
@@ -30,7 +30,7 @@ if (Test-Path $boardFile) {
 
 # 2. 30日以上更新がない obsidian-vault/00_inbox/ のファイル
 $staleCutoff = (Get-Date).AddDays(-30)
-$staleFiles = Get-ChildItem "$base\obsidian-vault\00_inbox" -Filter "*.md" -ErrorAction SilentlyContinue |
+$staleFiles = Get-ChildItem "$base/obsidian-vault/00_inbox" -Filter "*.md" -ErrorAction SilentlyContinue |
     Where-Object { $_.LastWriteTime -lt $staleCutoff -and $_.Name -ne "_template.md" }
 
 if ($staleFiles.Count -gt 0) {
@@ -41,7 +41,7 @@ if ($staleFiles.Count -gt 0) {
 }
 
 # 3. logs ディレクトリの古いものをアーカイブ提案（30日超）
-$oldLogs = Get-ChildItem "$base\logs" -Directory -ErrorAction SilentlyContinue |
+$oldLogs = Get-ChildItem "$base/logs" -Directory -ErrorAction SilentlyContinue |
     Where-Object { $_.LastWriteTime -lt $staleCutoff }
 if ($oldLogs.Count -gt 0) {
     Write-Log "アーカイブ候補のログフォルダ: $($oldLogs.Count) 件"

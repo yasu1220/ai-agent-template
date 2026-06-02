@@ -6,9 +6,9 @@ $ErrorActionPreference = "Stop"
 $base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 
-$logDir = "$base\logs\$today"
+$logDir = "$base/logs/$today"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$logFile = "$logDir\task-dispatch.log"
+$logFile = "$logDir/task-dispatch.log"
 
 function Write-Log($msg) {
     $ts = Get-Date -Format "HH:mm:ss"
@@ -18,7 +18,7 @@ function Write-Log($msg) {
 Write-Log "=== task-dispatch スキャン開始 ==="
 
 # inbox の未処理メモを検出（"processed:" タグがないもの）
-$inboxDir = "$base\obsidian-vault\00_inbox"
+$inboxDir = "$base/obsidian-vault/00_inbox"
 $unprocessed = @()
 
 Get-ChildItem $inboxDir -Filter "*.md" -ErrorAction SilentlyContinue |

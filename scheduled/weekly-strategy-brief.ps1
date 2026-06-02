@@ -4,11 +4,11 @@
 $ErrorActionPreference = "Stop"
 $base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
-$weekNum = [System.Globalization.ISOWeek]::GetWeekOfYear((Get-Date))
+$weekNum = (Get-Culture).Calendar.GetWeekOfYear((Get-Date), [System.Globalization.CalendarWeekRule]::FirstFourDayWeek, [DayOfWeek]::Monday)
 
-$logDir = "$base\logs\$today"
+$logDir = "$base/logs/$today"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$logFile = "$logDir\weekly-strategy-brief.log"
+$logFile = "$logDir/weekly-strategy-brief.log"
 
 function Write-Log($msg) {
     $ts = Get-Date -Format "HH:mm:ss"
@@ -18,11 +18,11 @@ function Write-Log($msg) {
 Write-Log "=== weekly-strategy-brief 開始 (Week $weekNum) ==="
 
 # 出力先
-$briefFile = "$base\obsidian-vault\03_decisions\weekly-brief-$(Get-Date -Format 'yyyy')-W$($weekNum.ToString('00')).md"
+$briefFile = "$base/obsidian-vault/03_decisions/weekly-brief-$(Get-Date -Format 'yyyy')-W$($weekNum.ToString('00')).md"
 
 # 直近7日分の logs を集計
 $weekStart = (Get-Date).AddDays(-7)
-$weekLogs = Get-ChildItem "$base\logs" -Directory -ErrorAction SilentlyContinue |
+$weekLogs = Get-ChildItem "$base/logs" -Directory -ErrorAction SilentlyContinue |
     Where-Object { $_.LastWriteTime -ge $weekStart }
 
 $totalLogLines = 0
@@ -33,7 +33,7 @@ foreach ($d in $weekLogs) {
 }
 
 # task-board の現状
-$boardFile = "$base\task-board\main-board.md"
+$boardFile = "$base/task-board/main-board.md"
 $inProgress = 0
 $blocked = 0
 $done = 0

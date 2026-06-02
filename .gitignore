@@ -1,9 +1,7 @@
 # === 個人データ（絶対に共有しない）===
 
 # Obsidian個人コンテキスト（.template.md はリポジトリに残す）
-obsidian-vault/01_context/philosophy-values.md
-obsidian-vault/01_context/professional-identity.md
-obsidian-vault/01_context/technical-setup.md
+# ※ 記入済みファイルはリポジトリに含めて共有する
 
 # 個人の inbox / handoff / decisions / projects
 obsidian-vault/00_inbox/*

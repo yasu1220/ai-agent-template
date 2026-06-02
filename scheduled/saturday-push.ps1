@@ -5,9 +5,9 @@ $ErrorActionPreference = "SilentlyContinue"
 $base = Split-Path -Parent $PSScriptRoot
 $today = Get-Date -Format "yyyy-MM-dd"
 
-$logDir = "$base\logs\$today"
+$logDir = "$base/logs/$today"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$logFile = "$logDir\saturday-push.log"
+$logFile = "$logDir/saturday-push.log"
 
 function Write-Log($msg) {
     $ts = Get-Date -Format "HH:mm:ss"

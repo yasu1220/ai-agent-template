@@ -4,7 +4,7 @@
 
 $ErrorActionPreference = "Stop"
 $base = Split-Path -Parent $PSScriptRoot
-$boardFile = "$base\task-board\main-board.md"
+$boardFile = "$base/task-board/main-board.md"
 
 if (-not (Test-Path $boardFile)) {
     "T0001"
